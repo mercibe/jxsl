@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.servicelibre</groupId>
 		<artifactId>servicelibre-parent</artifactId>
-		<version>5</version>
+		<version>6-SNAPSHOT</version>
 	</parent>
 
 	<!-- POM base information -->
@@ -21,15 +21,15 @@
 
 	<!-- Properties -->
 	<properties>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.7</jdk.version>
 	</properties>
 
 	<!-- Source code versionning system -->
 
 	<scm>
-		<connection>scm:svn:http://jxsl.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://jxsl.googlecode.com/svn/trunk</developerConnection>
-		<url>http://code.google.com/p/jxsl/source/browse/trunk</url>
+		<connection>scm:git:https://github.com/mercibe/jxsl.git</connection>
+		<developerConnection>scm:git:git@github.com/mercibe/jxsl.git</developerConnection>
+		<url>https://github.com/mercibe/jxsl</url>
 	</scm>
 
 	<!-- Project details -->
@@ -147,7 +147,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.0-beta-3</version>
+				<version>1.4</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -192,6 +192,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
 				<executions>
 					<execution>
 						<id>install</id>
@@ -219,8 +220,19 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-plugin</artifactId>
 				<configuration>
-					<connectionType>developerConnection</connectionType>
-				</configuration>
+			          <providerImplementations>
+			                <git>jgit</git>
+			          </providerImplementations>
+  				  <connectionType>developerConnection</connectionType>
+			        </configuration>
+
+			       <dependencies>
+			            <dependency>
+			                 <groupId>org.apache.maven.scm</groupId>
+			                 <artifactId>maven-scm-provider-jgit</artifactId>
+			                 <version>1.9.4</version>
+			            </dependency>
+			       </dependencies>
 			</plugin>
 
 			<!-- License management -->
@@ -282,10 +294,6 @@
 					<locales>en</locales>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
 			</plugin>
 		</plugins>
 
@@ -494,7 +502,7 @@
 			-->
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
-			<artifactId>saxon</artifactId>
+			<artifactId>Saxon-HE</artifactId>
 		</dependency>
 
 		<dependency>

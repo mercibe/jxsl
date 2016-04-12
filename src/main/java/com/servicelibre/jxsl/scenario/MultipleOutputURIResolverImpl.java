@@ -32,6 +32,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.saxon.lib.OutputURIResolver;
+
 public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
 {
 
@@ -85,5 +87,10 @@ public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
     {
        return outputs;
     }
+
+	@Override
+	public OutputURIResolver newInstance() {
+		return new MultipleOutputURIResolverImpl();
+	}
 
 }

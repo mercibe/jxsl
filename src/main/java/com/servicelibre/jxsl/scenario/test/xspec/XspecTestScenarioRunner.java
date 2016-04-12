@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 import javax.xml.XMLConstants;
+import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,6 +39,8 @@ import javax.xml.xpath.XPathFactory;
 import javax.xml.xpath.XPathFactoryConfigurationException;
 
 import net.sf.saxon.lib.NamespaceConstant;
+import net.sf.saxon.om.NamespaceResolver;
+import net.sf.saxon.pull.NamespaceContextImpl;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -106,10 +109,13 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 			logger.error("Error while creating XPathFactory",e1);
 			return;
 		}
-
+		
 		SimpleNamespaceContext namespaceContext = new SimpleNamespaceContext();
 		namespaceContext.bindNamespaceUri("x", "http://www.jenitennison.com/xslt/xspec");
-		xpath.setNamespaceContext(namespaceContext);
+		
+		NamespaceContextImpl nc = new NamespaceContextImpl(new SimpleNamespaceResolver(namespaceContext));
+		
+		xpath.setNamespaceContext(nc);
 
 		try {
 
@@ -326,7 +332,7 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 		currentXspecTestsScenario.setSaveRunReport(true);
 		currentXspecTestsScenario.setSaveXmlSource(true);
 		currentXspecTestsScenario.setMainOutputName(xspecFile.getName().replace(".xspec", "-result.xml"));
-		currentXspecTestsScenario.setInitialTemplate("{http://www.jenitennison.com/xslt/xspec}main");
+		currentXspecTestsScenario.setInitialTemplate("","http://www.jenitennison.com/xslt/xspec","main");
 		currentXspecTestsScenario.setName(xspecFile.getName().replaceAll(".xspec", "_xspec"));
 
 		// FIXME xspecFile could be omitted since initialTemplate has been
