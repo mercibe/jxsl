@@ -90,7 +90,7 @@ public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
 
 	@Override
 	public OutputURIResolver newInstance() {
-		return new MultipleOutputURIResolverImpl();
+		return this;
 	}
 
 }
