@@ -82,16 +82,28 @@
 	<!-- Distributions -->
 
 	<distributionManagement>
-		<repository>
-			<id>jxsl</id>
-			<name>Alternate Maven repository of releases</name>
-			<url>dav:https://jxsl.googlecode.com/svn/maven2/releases</url>
+<!-- 		<repository> -->
+<!-- 			<id>jxsl</id> -->
+<!-- 			<name>Alternate Maven repository of releases</name> -->
+<!-- 			<url>dav:https://jxsl.googlecode.com/svn/maven2/releases</url> -->
+<!-- 		</repository> -->
+<!-- 		<snapshotRepository> -->
+<!-- 			<id>jxsl-snapshots</id> -->
+<!-- 			<name>Alternate Maven repository of snapshots</name> -->
+<!-- 			<url>dav:https://jxsl.googlecode.com/svn/maven2/snapshots</url> -->
+<!-- 			<uniqueVersion>true</uniqueVersion> -->
+<!-- 		</snapshotRepository> -->
+<repository>
+			<id>franqus-releases</id>
+			<name>Choses Franqus</name>
+			<url>http://mvn:8080/nexus/content/repositories/releases/</url>
 		</repository>
+
 		<snapshotRepository>
-			<id>jxsl-snapshots</id>
-			<name>Alternate Maven repository of snapshots</name>
-			<url>dav:https://jxsl.googlecode.com/svn/maven2/snapshots</url>
-			<uniqueVersion>true</uniqueVersion>
+			<id>franqus-snapshots</id>
+			<name>Choses Franqus (snapshot)</name>
+			<url>http://mvn:8080/nexus/content/repositories/snapshots/</url>
+			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 		<site>
 			<id>jxsl-website</id>
