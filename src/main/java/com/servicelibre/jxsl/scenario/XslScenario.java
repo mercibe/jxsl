@@ -494,7 +494,12 @@ public class XslScenario {
 
 			try {
 
-				this.transformer = getCompiledXsl().newTransformer();
+				Templates compiledXsl = getCompiledXsl();
+				if(compiledXsl == null) {
+					return null;
+				}
+				
+				this.transformer = compiledXsl.newTransformer();
 				
 				// Saxon specific
 				if ((this.transformer instanceof net.sf.saxon.jaxp.TransformerImpl)) {
