@@ -411,6 +411,7 @@
                 <version>3.0.1</version>
                 <configuration>
                     <quiet>true</quiet>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                 </configuration>
             </plugin>
             <plugin>
