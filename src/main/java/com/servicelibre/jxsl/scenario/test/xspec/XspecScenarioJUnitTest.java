@@ -40,7 +40,7 @@ import com.servicelibre.jxsl.scenario.test.TestReport;
  * JUnit test scenario for xspec files.
  * 
  * XspecScenarioJUnitTest is configured via a Spring application context file
- * that MUST be named <strong>xspec&#8209;context.xml</strong> and MUST be
+ * that MUST be named <strong>xspec-context.xml</strong> and MUST be
  * located at the classpath root.
  * 
  * To enable XSL unit testing with Xspec in your own project (build with Ant,

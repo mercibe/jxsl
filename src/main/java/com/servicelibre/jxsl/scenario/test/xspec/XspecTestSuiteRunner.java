@@ -120,8 +120,7 @@ public class XspecTestSuiteRunner implements XslTestSuiteRunner
 
 	/**
 	 * Recursively load all *.xspec files under each given directories.
-	 * 
-	 * @param directories
+	 * @param directories directories containing xspec files to load
 	 */
 	public void setDirectories(List<File> directories) {
 		testDirectoryFiles.clear();

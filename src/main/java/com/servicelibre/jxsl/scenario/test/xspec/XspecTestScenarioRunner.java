@@ -44,7 +44,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 /**
- * Run XML testdoc => generate Xspec XSL to apply on the fly then apply!
+ * Run XML testdoc : generate Xspec XSL to apply on the fly then apply!
  */
 public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 

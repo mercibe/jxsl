@@ -66,7 +66,7 @@ import java.util.*;
  * <li>TransformerFactory class name (optional, default to
  * net.sf.saxon.TransformerFactoryImpl).</li>
  * </ul>
- *
+ * <p>
  * XslScenario is built on top of JAXP.
  */
 public class XslScenario {
@@ -112,7 +112,6 @@ public class XslScenario {
     }
 
     /**
-     *
      * @param xslPath valid xsl URI as String
      */
     public XslScenario(String xslPath) {
@@ -195,8 +194,9 @@ public class XslScenario {
     /**
      * Apply XSL transformation on XML bytes.
      *
-     * @param xmlBytes
-     * @return
+     * @param xmlBytes xml bytes array
+     * @param systemId xml SystemId
+     * @return a Map with transformation result
      */
     public Map<String, String> apply(byte[] xmlBytes, String systemId) {
 
@@ -296,13 +296,6 @@ public class XslScenario {
 
     /**
      * Creation of the RunReport
-     *
-     * @param xmlSourceFilename
-     *
-     * @param xslOutputs
-     * @param startDate
-     * @param executionTime
-     * @return
      */
     private RunReport createRunReport(String xmlSourceFilename, Map<String, String> xslOutputs, Date startDate, long executionTime) {
 
@@ -336,12 +329,6 @@ public class XslScenario {
         return runReport;
     }
 
-    /**
-     *
-     * @param currentOuputDir
-     * @param xslOutputs
-     * @return
-     */
     private List<File> saveOutputs(File currentOuputDir, Map<String, String> xslOutputs) {
 
         File mainOutputFile;
@@ -396,9 +383,6 @@ public class XslScenario {
     /**
      * Save RunReport - scenario XML config file (xslPath, transformer,
      * parameters, execution time, etc.)
-     *
-     * @param currentOuputDir
-     * @param runReport
      */
     private void saveRunReport(File currentOuputDir, RunReport runReport) {
         if (isValidOutputDir()) {
@@ -455,8 +439,7 @@ public class XslScenario {
     /**
      * Returns the default transformer
      *
-     *
-     * @return
+     * @return the current Transformer
      */
     public Transformer getTransformer() {
 
@@ -590,6 +573,7 @@ public class XslScenario {
      * <li>default (DEFAULT_TRANSFORMER_FACTORY)</li>
      * </ol>
      *
+     * @return the current TransformerFactory
      */
     public TransformerFactory getTransformerFactory() {
 
