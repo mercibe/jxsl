@@ -1,3 +1,49 @@
-/target/
 /jxsl-trace.log
-/.project
+/target/
+*/target/**
+*/log/**
+!.mvn/wrapper/maven-wrapper.jar
+*.tmp
+*.log
+*.gz
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+.svn
+.settings
+.classpath
+.project
+.springBeans
+target
+*IS_UNDEFINED*
+/usito-lib.iml
+.idea/
+*.iml
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
