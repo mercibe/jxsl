@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -26,17 +26,17 @@ import com.servicelibre.jxsl.dstest.Document;
 
 public interface XslTestScenarioRunner {
 
-	public void reset();
+	void reset();
 
-	public void setOutputDir(File outputDir);
+	void setOutputDir(File outputDir);
 
-	public TestReport getLastRunReport();
+	TestReport getLastRunReport();
 
-	public TestReport run(File file);
+	TestReport run(File file);
 	
-	public TestReport run(File file, File testOutputDir);
+	TestReport run(File file, File testOutputDir);
 	
-	public TestReport run(File file, File testOutputDir, Document xmlDoc);
+	TestReport run(File file, File testOutputDir, Document xmlDoc);
 
-	public TestReport run(File file, Document xmlDoc);
+	TestReport run(File file, Document xmlDoc);
 }

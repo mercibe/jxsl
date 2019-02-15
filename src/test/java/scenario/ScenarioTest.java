@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -20,49 +20,34 @@
 
 package scenario;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
-
+import com.servicelibre.jxsl.scenario.RunReport;
+import com.servicelibre.jxsl.scenario.XslScenario;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.servicelibre.jxsl.scenario.RunReport;
-import com.servicelibre.jxsl.scenario.XslScenario;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
-@ContextConfiguration(locations="classpath:ScenarioTest-context.xml")
+import static org.junit.Assert.*;
+
+@ContextConfiguration(locations = "classpath:ScenarioTest-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ScenarioTest
-{
+public class ScenarioTest {
 
     @javax.annotation.Resource
     private Map<String, Resource> testResources;
 
     @Test
-    public void basicScenarioXslt1() throws IOException
-    {
-
-        System.setProperty("javax.xml.transform.TransformerFactory", XslScenario.XALAN_TRANSFORMER_FACTORY_FQCN);
-        runBasicScenarioOn(testResources.get("test01-xslt1.xsl").getURL().toExternalForm());
-    }
-
-    @Test
-    public void basicScenarioXslt2() throws IOException
-    {
+    public void basicScenarioXslt2() throws IOException {
         System.setProperty("javax.xml.transform.TransformerFactory", XslScenario.SAXON_TRANSFORMER_FACTORY_FQCN);
         runBasicScenarioOn(testResources.get("test01-xslt2.xsl").getURL().toExternalForm());
     }
 
-    private XslScenario runBasicScenarioOn(String xslPath) throws IOException
-    {
+    private XslScenario runBasicScenarioOn(String xslPath) throws IOException {
         File xmlFile = new File(testResources.get("test01.xml").getURI());
 
         XslScenario sc = new XslScenario();
@@ -74,7 +59,7 @@ public class ScenarioTest
         assertNull("xslPath MUST be null.", sc.getXslPath());
         assertNotNull("OutputURIResolver cannot be null.", sc.getOutputURIResolver());
         assertNotNull("Parameters cannot be null.", sc.getParameters());
-        assertTrue("There should be no parameter at this stage.", sc.getParameters().size() == 0);
+        assertEquals("There should be no parameter at this stage.", 0, sc.getParameters().size());
 
         sc.setXslPath(xslPath);
         Map<String, String> outputs = sc.apply(xmlFile);
@@ -106,8 +91,7 @@ public class ScenarioTest
     }
 
     @Test
-    public void outputNameTest() throws IOException
-    {
+    public void outputNameTest() throws IOException {
 
         XslScenario sc = new XslScenario(testResources.get("test01-xslt2.xsl").getURL());
         assertEquals("test01-xslt2.output", sc.getMainOutputName());
@@ -118,7 +102,6 @@ public class ScenarioTest
         sc.apply(xmlFile);
         RunReport lastRunReport = sc.getLastRunReport();
         assertNotNull("lastRunReport cannot be null", lastRunReport);
-        assertNotNull("executionTime cannot be null", lastRunReport.executionTime);
         assertNotNull("mainOutputFile cannot be null is resultsPersistedOnDisk == true", lastRunReport.mainOutputFile);
         assertTrue("mainOuputFile MUST exists is resultsPersistedOnDisk == true", lastRunReport.mainOutputFile.exists());
 
@@ -126,7 +109,7 @@ public class ScenarioTest
 
     /*
      * We should test:
-     * 
+     *
      * - xsl with 2+ outputs: with params for href result-document, with and
      * without SL MultipleOutputURIResolver (are files saved as XSL wish?) -
      * with outputDir

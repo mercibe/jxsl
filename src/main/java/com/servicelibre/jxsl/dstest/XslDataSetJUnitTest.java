@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -59,7 +59,7 @@ public class XslDataSetJUnitTest {
 	@Parameters
 	public static Collection<Object[]> getDocuments() {
 
-		List<Object[]> documents = new ArrayList<Object[]>(4);
+		List<Object[]> documents = new ArrayList<>(4);
 
 		for (DocumentId docId : runner.getDocSource().getDocumentIds()) {
 			documents.add(new Object[] { docId });

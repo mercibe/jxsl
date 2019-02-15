@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -20,47 +20,39 @@
 
 package xsltestengine.source;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import com.servicelibre.jxsl.dstest.sources.FolderDocumentSource;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.servicelibre.jxsl.dstest.sources.FolderDocumentSource;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit tests for the FolderDocumentSource class that verify
  * FolderDocumentSource behavior works in isolation.
  */
-public class FolderDocumentSourceTest
-{
-    // The object to test
-    private FolderDocumentSource source = new FolderDocumentSource(rootFolder, new String[] { "xml" }, true);
-
+public class FolderDocumentSourceTest {
     private static File rootFolder;
+    // The object to test
+    private FolderDocumentSource source = new FolderDocumentSource(rootFolder, new String[]{"xml"}, true);
 
     @BeforeClass
-    public static void init()
-    {
+    public static void init() {
         URL rootFolderUrl = ClassLoader.getSystemResource("xsltestengine");
 
-        try
-        {
+        try {
             rootFolder = new File(rootFolderUrl.toURI());
-        }
-        catch (URISyntaxException e)
-        {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void sourceRootDirIsValid()
-    {
+    public void sourceRootDirIsValid() {
         File dir = source.getrootDir();
         assertNotNull(dir);
         assertTrue(dir.exists());

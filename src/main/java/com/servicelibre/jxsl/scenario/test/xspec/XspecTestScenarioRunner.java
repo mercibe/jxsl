@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -20,41 +20,28 @@
 
 package com.servicelibre.jxsl.scenario.test.xspec;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import javax.xml.XMLConstants;
-import javax.xml.namespace.NamespaceContext;
-import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
-import javax.xml.xpath.XPathFactoryConfigurationException;
-
-import net.sf.saxon.lib.NamespaceConstant;
-import net.sf.saxon.om.NamespaceResolver;
-import net.sf.saxon.pull.NamespaceContextImpl;
-
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.xml.SimpleNamespaceContext;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
 import com.servicelibre.jxsl.dstest.Document;
 import com.servicelibre.jxsl.scenario.RunReport;
 import com.servicelibre.jxsl.scenario.XslScenario;
 import com.servicelibre.jxsl.scenario.test.FailureReport;
 import com.servicelibre.jxsl.scenario.test.TestReport;
 import com.servicelibre.jxsl.scenario.test.XslTestScenarioRunner;
+import net.sf.saxon.lib.NamespaceConstant;
+import net.sf.saxon.pull.NamespaceContextImpl;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.xml.SimpleNamespaceContext;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.xpath.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  * Run XML testdoc => generate Xspec XSL to apply on the fly then apply!
@@ -65,7 +52,7 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 	private static final String JXSL_TEST_HREF_PLACEHOLDER = "href=\"" + JXSL_TEST_DOCUMENT_PLACEHOLDER + "\"";
 	private static final String JXSL_TEST_SELECT_PLACEHOLDER = "doc\\('" + JXSL_TEST_DOCUMENT_PLACEHOLDER + "'\\)";
 
-	static Logger logger = LoggerFactory.getLogger(XspecTestScenarioRunner.class);
+	private static Logger logger = LoggerFactory.getLogger(XspecTestScenarioRunner.class);
 
 	static {
 		System.setProperty("javax.xml.transform.TransformerFactory", XslScenario.SAXON_TRANSFORMER_FACTORY_FQCN);
@@ -102,7 +89,7 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 
 	private void init() {
 
-		XPath xpath = null;
+		XPath xpath;
 		try {
 			xpath = XPathFactory.newInstance(NamespaceConstant.OBJECT_MODEL_SAXON).newXPath();
 		} catch (XPathFactoryConfigurationException e1) {
@@ -184,7 +171,7 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 
 		this.outputDir = outputDir;
 
-		RunReport testRunReport = null;
+		RunReport testRunReport;
 		TestReport testReport = new TestReport();
 
 		// Generate custom test XSL
@@ -233,9 +220,7 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 					testReport.testCount = ((Double) testCount.evaluate(xspecResultDoc, XPathConstants.NUMBER)).intValue();
 					testReport.testFailedCount = ((Double) testFailedCount.evaluate(xspecResultDoc, XPathConstants.NUMBER)).intValue();
 
-				} catch (SAXException e) {
-					logger.error("Error while creating failure report", e);
-				} catch (IOException e) {
+				} catch (SAXException | IOException e) {
 					logger.error("Error while creating failure report", e);
 				} catch (XPathExpressionException e) {
 					logger.error("Error while evaluating XPath during failure report creation", e);
@@ -424,9 +409,8 @@ public class XspecTestScenarioRunner implements XslTestScenarioRunner {
 
 	// TODO ????
 	private FailureReport getFailureReport(File mainOutputFile) {
-		FailureReport failureReport = new FailureReport("XSpec Test failed to run.  See error log.");
 
-		return failureReport;
+		return new FailureReport("XSpec Test failed to run.  See error log.");
 	}
 
 }

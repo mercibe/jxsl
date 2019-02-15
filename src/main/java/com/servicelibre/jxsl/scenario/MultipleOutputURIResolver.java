@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -27,6 +27,6 @@ import net.sf.saxon.lib.OutputURIResolver;
 
 public interface MultipleOutputURIResolver extends OutputURIResolver
 {
-    public void clearResults();
-    public Map<String, StringWriter> getOutputs();
+    void clearResults();
+    Map<String, StringWriter> getOutputs();
 }

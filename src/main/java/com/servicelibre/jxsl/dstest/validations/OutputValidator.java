@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -22,8 +22,8 @@ package com.servicelibre.jxsl.dstest.validations;
 
 public interface OutputValidator {
 
-	public String getName();
-	public String getDescription();
-	public boolean isValid(String output);
-	public String getMessage();
+	String getName();
+	String getDescription();
+	boolean isValid(String output);
+	String getMessage();
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -29,7 +29,7 @@ public class ValidationReport
 {
 
     protected XslValidation outputValidation;
-    public List<ValidationFailure> failures = new ArrayList<ValidationFailure>();
+    public List<ValidationFailure> failures = new ArrayList<>();
 	private DocumentId documentId;
 
     public ValidationReport(XslValidation outputValidation, DocumentId documentId)

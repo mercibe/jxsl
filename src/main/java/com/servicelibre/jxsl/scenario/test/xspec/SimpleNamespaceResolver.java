@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -17,20 +17,18 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with jxsl.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.servicelibre.jxsl.scenario.test.xspec;
+
+import net.sf.saxon.om.NamespaceResolver;
+import org.springframework.util.xml.SimpleNamespaceContext;
 
 import java.util.Iterator;
 
-import org.springframework.util.xml.SimpleNamespaceContext;
-
-import net.sf.saxon.om.NamespaceResolver;
-
 public class SimpleNamespaceResolver implements NamespaceResolver {
 
-	SimpleNamespaceContext namespaceContext;
+	private SimpleNamespaceContext namespaceContext;
 	
-	public SimpleNamespaceResolver(SimpleNamespaceContext namespaceContext) {
+	SimpleNamespaceResolver(SimpleNamespaceContext namespaceContext) {
 		this.namespaceContext = namespaceContext;
 	}
 

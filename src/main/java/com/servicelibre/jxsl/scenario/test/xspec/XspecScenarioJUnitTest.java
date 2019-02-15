@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -77,7 +77,7 @@ public class XspecScenarioJUnitTest
 
     private static final String XSPEC_TEST_SUITE_RUNNER_BEAN_ID = "xspecTestSuiteRunner";
 
-    public final static String SPRING_CONTEXT_FILENAME = "xspec-context.xml";
+    private final static String SPRING_CONTEXT_FILENAME = "xspec-context.xml";
 
     private static XspecTestSuiteRunner xspecSuiteRunner;
 
@@ -90,7 +90,7 @@ public class XspecScenarioJUnitTest
 
     }
 
-    protected File xspecFile;
+    private File xspecFile;
 
     public XspecScenarioJUnitTest(File xspecFile)
     {
@@ -116,13 +116,10 @@ public class XspecScenarioJUnitTest
         {
             System.err.println(testReport);
         }
-       
-        StringBuilder sb = new StringBuilder();
-        sb.append(testReport.testFailedCount).append(" test(s) on ").append(testReport.testCount).append(" failed. ");
-                
-        sb.append("See detailed report at ").append(testReport.reportUrl);
 
-        assertTrue(sb.toString(), testReport.success);
+        String sb = testReport.testFailedCount + " test(s) on " + testReport.testCount + " failed. " +
+                "See detailed report at " + testReport.reportUrl;
+        assertTrue(sb, testReport.success);
 
     }
 
@@ -130,7 +127,7 @@ public class XspecScenarioJUnitTest
     public static Collection<Object[]> getXspecFiles()
     {
 
-        List<Object[]> xspecFiles = new ArrayList<Object[]>(4);
+        List<Object[]> xspecFiles = new ArrayList<>(4);
 
         for (File file : xspecSuiteRunner.getTestFiles())
         {

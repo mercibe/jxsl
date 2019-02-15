@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -48,8 +48,8 @@ public class XspecTestSuiteRunner implements XslTestSuiteRunner
 
 	private static final Logger logger = LoggerFactory.getLogger(XspecTestSuiteRunner.class);
 
-	private List<File> testFiles = new ArrayList<File>();
-	private List<File> testDirectoryFiles = new ArrayList<File>();
+	private List<File> testFiles = new ArrayList<>();
+	private List<File> testDirectoryFiles = new ArrayList<>();
 
 	private IOFileFilter fileFilter = TrueFileFilter.TRUE;
 	private IOFileFilter directoryFilter = TrueFileFilter.TRUE;
@@ -102,7 +102,7 @@ public class XspecTestSuiteRunner implements XslTestSuiteRunner
 
 	public List<TestReport> runAll() {
 
-		List<TestReport> testReports = new ArrayList<TestReport>();
+		List<TestReport> testReports = new ArrayList<>();
 
 		logger.info("Starting the execution of Xspec tests...");
 
@@ -133,7 +133,7 @@ public class XspecTestSuiteRunner implements XslTestSuiteRunner
 
 	public List<File> getTestFiles() {
 
-		List<File> allFiles = new ArrayList<File>(testFiles.size() + testDirectoryFiles.size());
+		List<File> allFiles = new ArrayList<>(testFiles.size() + testDirectoryFiles.size());
 		allFiles.addAll(testFiles);
 		allFiles.addAll(testDirectoryFiles);
 		return allFiles;

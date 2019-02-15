@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -33,9 +33,7 @@ public class FailureReport
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("");
-        sb.append(failureMessage);
-        return sb.toString();
+        return "" + failureMessage;
     }
 
 }

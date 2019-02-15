@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -20,16 +20,14 @@
 
 package com.servicelibre.jxsl.dstest.sources;
 
+import com.servicelibre.jxsl.dstest.Document;
+import com.servicelibre.jxsl.dstest.DocumentId;
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-
-import com.servicelibre.jxsl.dstest.Document;
-import com.servicelibre.jxsl.dstest.DocumentId;
 
 public class FolderDocumentSource  implements DocumentSource {
 
@@ -53,15 +51,12 @@ public class FolderDocumentSource  implements DocumentSource {
 	@Override
 	public List<DocumentId> getDocumentIds() {
 		
-		List<DocumentId> documentIds = new ArrayList<DocumentId>(); 
+		List<DocumentId> documentIds = new ArrayList<>();
 		
 		Collection<File> files = FileUtils.listFiles(rootDir, extensions, recursive);
-		
-		Iterator<File> fileIt = files.iterator();
-		
-		while(fileIt.hasNext()) {
-			
-			File file = fileIt.next();
+
+		for (File file : files) {
+
 			documentIds.add(new DocumentId(file.getAbsolutePath()));
 		}
 		

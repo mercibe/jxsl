@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -20,21 +20,19 @@
 
 package xsltestengine.engine;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-
+import com.servicelibre.jxsl.dstest.XslDataSetJUnitTest;
+import com.servicelibre.jxsl.dstest.XslDataSetRunner;
+import com.servicelibre.jxsl.dstest.sources.DocumentSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.servicelibre.jxsl.dstest.XslDataSetRunner;
-import com.servicelibre.jxsl.dstest.sources.DocumentSource;
+import java.io.File;
 
-import com.servicelibre.jxsl.dstest.XslDataSetJUnitTest;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * A system test that verifies the components of the XslTestEngine framework
@@ -50,29 +48,29 @@ import com.servicelibre.jxsl.dstest.XslDataSetJUnitTest;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class XslTestEngineIntegrationTest {
 
-	// The object being tested
-	@Autowired
-	private XslDataSetRunner engine;
+    // The object being tested
+    @Autowired
+    private XslDataSetRunner engine;
 
-	@Autowired
-	private File rootFolder;
+    @Autowired
+    private File rootFolder;
 
-	@Autowired
-	private DocumentSource documentSource;
+    @Autowired
+    private DocumentSource documentSource;
 
-	@Test
-	public void testXslTestEngine() {
-		assertNotNull(rootFolder);
-		assertTrue(rootFolder.exists());
+    @Test
+    public void testXslTestEngine() {
+        assertNotNull(rootFolder);
+        assertTrue(rootFolder.exists());
 
-		assertNotNull(documentSource);
-		assertTrue(documentSource.getDocumentIds().size() > 0);
+        assertNotNull(documentSource);
+        assertTrue(documentSource.getDocumentIds().size() > 0);
 
-		assertNotNull(engine);
+        assertNotNull(engine);
 
-		
-		XslDataSetJUnitTest.assertEngineRun(engine.runAll());
 
-	}
+        XslDataSetJUnitTest.assertEngineRun(engine.runAll());
+
+    }
 
 }

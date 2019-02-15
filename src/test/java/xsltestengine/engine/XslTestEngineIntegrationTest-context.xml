@@ -37,7 +37,7 @@
 	</bean>
 	
 	<!-- JavaXslValidation1 -->
-	<util:list id="outputValidators1" value-type="com.servicelibre.jxsl.dstest.OuputValidator">
+	<util:list id="outputValidators1" value-type="com.servicelibre.jxsl.dstest.validations.OutputValidator">
 		<bean class="com.servicelibre.jxsl.dstest.validations.AlwaysTrueValidator" />
 		<bean class="com.servicelibre.jxsl.dstest.validations.AlwaysFalseValidator" />
 	</util:list>
@@ -48,7 +48,7 @@
 	</bean>
 
 	<!-- JavaXslValidation2 -->
-	<util:list id="outputValidators2" value-type="com.servicelibre.jxsl.dstest.OuputValidator">
+	<util:list id="outputValidators2" value-type="com.servicelibre.jxsl.dstest.validations.OutputValidator">
 		<bean class="com.servicelibre.jxsl.dstest.validations.AlwaysFalseValidator" />
 		<bean class="com.servicelibre.jxsl.dstest.validations.AlwaysFalseValidator" />
 	</util:list>

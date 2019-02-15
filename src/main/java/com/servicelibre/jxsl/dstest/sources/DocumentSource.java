@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -27,7 +27,7 @@ import com.servicelibre.jxsl.dstest.DocumentId;
 
 public interface DocumentSource {
 	
-	public List<DocumentId>getDocumentIds();
-	public Document getDocument(DocumentId docInfo);
+	List<DocumentId>getDocumentIds();
+	Document getDocument(DocumentId docInfo);
 
 }

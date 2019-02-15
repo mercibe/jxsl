@@ -1,553 +1,586 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.servicelibre</groupId>
-		<artifactId>servicelibre-parent</artifactId>
-		<version>6-SNAPSHOT</version>
-	</parent>
+    <!-- POM base information -->
+    <groupId>com.servicelibre</groupId>
+    <artifactId>jxsl</artifactId>
+    <version>0.1.14-SNAPSHOT</version>
 
-	<!-- POM base information -->
+    <name>jxsl</name>
+    <description>Java XSL helper code library</description>
+    <url>https://github.com/mercibe/jxsl</url>
+    <inceptionYear>2010</inceptionYear>
 
-	<artifactId>jxsl</artifactId>
-	<version>0.1.12-SNAPSHOT</version>
+    <!-- Properties -->
+    <properties>
+        <java.version>10</java.version>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.core.version>5.1.4.RELEASE</spring.core.version>
+    </properties>
 
-	<name>jxsl</name>
-	<description>Java XSL code library</description>
-	<url>http://code.google.com/p/jxsl</url>
-	<inceptionYear>2010</inceptionYear>
+    <!-- Source code versionning system -->
 
-	<!-- Properties -->
-	<properties>
-		<jdk.version>1.7</jdk.version>
-	</properties>
+    <scm>
+        <url>https://github.com/mercibe/jxsl</url>
+        <connection>scm:git:https://github.com/mercibe/jxsl.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/mercibe/jxsl.git</developerConnection>
+    </scm>
 
-	<!-- Source code versionning system -->
+    <!-- Project details -->
 
-	<scm>
-		<connection>scm:git:https://github.com/mercibe/jxsl.git</connection>
-		<developerConnection>scm:git:git@github.com/mercibe/jxsl.git</developerConnection>
-		<url>https://github.com/mercibe/jxsl</url>
-	</scm>
+    <organization>
+        <name>Service libre</name>
+        <url>http://servicelibre.com</url>
+    </organization>
 
-	<!-- Project details -->
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License, Version 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<organization>
-		<name>Service libre</name>
-		<url>http://servicelibre.com</url>
-	</organization>
+    <developers>
+        <developer>
+            <id>benoit.mercier</id>
+            <name>Benoit Mercier</name>
+            <email>benoit.mercibe@gmail.com</email>
+            <organization>Service libre</organization>
+            <organizationUrl>http://servicelibre.com</organizationUrl>
+            <timezone>+5</timezone>
+        </developer>
+    </developers>
 
-	<licenses>
-		<license>
-			<name>GNU Lesser General Public License, Version 3.0</name>
-			<url>http://www.gnu.org/licenses/lgpl.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/mercibe/jxsl/issues</url>
+    </issueManagement>
 
-	<developers>
-		<developer>
-			<id>benoit.mercier</id>
-			<name>Benoit Mercier</name>
-			<email>benoit.mercibe@gmail.com</email>
-			<organization>Service libre</organization>
-			<organizationUrl>http://servicelibre.com</organizationUrl>
-			<timezone>+5</timezone>
-			<roles>
-				<role>project administrator</role>
-				<role>developer</role>
-			</roles>
-		</developer>
-	</developers>
+    <ciManagement/>
 
-	<issueManagement>
-		<system>Google Code</system>
-		<url>http://code.google.com/p/jxsl/issues/list</url>
-	</issueManagement>
-
-	<ciManagement />
-
-	<mailingLists>
-		<mailingList>
-			<name>jxsl</name>
-			<subscribe>jxsl-subscribe@googlegroups.com</subscribe>
-			<unsubscribe>jxsl-unsubscribe@googlegroups.com</unsubscribe>
-			<archive>http://groups.google.com/group/jxsl</archive>
-		</mailingList>
-	</mailingLists>
+    <mailingLists>
+        <mailingList>
+            <name>jxsl</name>
+            <subscribe>jxsl-subscribe@googlegroups.com</subscribe>
+            <unsubscribe>jxsl-unsubscribe@googlegroups.com</unsubscribe>
+            <archive>http://groups.google.com/group/jxsl</archive>
+        </mailingList>
+    </mailingLists>
 
 
-	<!-- Distributions -->
+    <!-- Distributions -->
 
-	<distributionManagement>
-<!-- 		<repository> -->
-<!-- 			<id>jxsl</id> -->
-<!-- 			<name>Alternate Maven repository of releases</name> -->
-<!-- 			<url>dav:https://jxsl.googlecode.com/svn/maven2/releases</url> -->
-<!-- 		</repository> -->
-<!-- 		<snapshotRepository> -->
-<!-- 			<id>jxsl-snapshots</id> -->
-<!-- 			<name>Alternate Maven repository of snapshots</name> -->
-<!-- 			<url>dav:https://jxsl.googlecode.com/svn/maven2/snapshots</url> -->
-<!-- 			<uniqueVersion>true</uniqueVersion> -->
-<!-- 		</snapshotRepository> -->
-<repository>
-			<id>franqus-releases</id>
-			<name>Choses Franqus</name>
-			<url>http://mvn:8080/nexus/content/repositories/releases/</url>
-		</repository>
+    <distributionManagement>
 
-		<snapshotRepository>
-			<id>franqus-snapshots</id>
-			<name>Choses Franqus (snapshot)</name>
-			<url>http://mvn:8080/nexus/content/repositories/snapshots/</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-		<site>
-			<id>jxsl-website</id>
-			<name>jxsl website</name>
-			<url>file://${basedir}/target/dist/site</url>
-		</site>
-	</distributionManagement>
 
-	<!-- Build -->
+        <snapshotRepository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+            </url>
+        </repository>
 
-	<prerequisites>
-		<maven>2.0.9</maven>
-	</prerequisites>
+        <site>
+            <id>jxsl-website</id>
+            <name>jxsl website</name>
+            <url>file://${basedir}/target/dist/site</url>
+        </site>
 
-	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-		</extensions>
-		<plugins>
-			<!-- compiler -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>UTF-8</encoding>
-					<showDeprecation>true</showDeprecation>
-				</configuration>
-			</plugin>
-			<!-- packaging -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-						<manifestEntries>
-							<Implementation-Build>${buildNumber}</Implementation-Build>
-							<Built-on>${timestamp}</Built-on>
-							<SCM-Revision>${buildNumber}</SCM-Revision>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>create</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<timestampFormat>{0,date,dd-MM-yyyy HH:mm:ss}</timestampFormat>
-					<doCheck>false</doCheck>
-					<doUpdate>true</doUpdate>
-				</configuration>
-			</plugin>
+    </distributionManagement>
 
-			<plugin>
-              <artifactId>maven-assembly-plugin</artifactId>
-              <configuration>
-                        <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                        <finalName>${project.artifactId}</finalName>
-                        <appendAssemblyId>true</appendAssemblyId>
-                        <excludes>
-                        	<exclude>**/xspec-context.xml</exclude>
-                        </excludes>
-              </configuration>
+    <!-- Build -->
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.3.1</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- compiler -->
+            <!--For Java 10-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                    <!--<encoding>UTF-8</encoding>-->
+                </configuration>
+            </plugin>
+            <!-- packaging -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                            <Built-on>${timestamp}</Built-on>
+                            <SCM-Revision>${buildNumber}</SCM-Revision>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <timestampFormat>{0,date,dd-MM-yyyy HH:mm:ss}</timestampFormat>
+                    <doCheck>false</doCheck>
+                    <doUpdate>true</doUpdate>
+                </configuration>
+            </plugin>
+
+            <!--<plugin>-->
+            <!--<artifactId>maven-assembly-plugin</artifactId>-->
+            <!--<version>3.1.0</version>-->
+
+            <!--<configuration>-->
+            <!--<descriptorRefs>-->
+            <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--</descriptorRefs>-->
+            <!--<finalName>${project.artifactId}</finalName>-->
+            <!--<appendAssemblyId>true</appendAssemblyId>-->
+            <!--<excludes>-->
+            <!--<exclude>**/xspec-context.xml</exclude>-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
+
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>sources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- resources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- testing -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.11.1</version>
+                <configuration>
+                    <providerImplementations>
+                        <git>jgit</git>
+                    </providerImplementations>
+                    <connectionType>developerConnection</connectionType>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-jgit</artifactId>
+                        <version>1.9.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- License management -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.16</version>
+                <configuration>
+                    <verbose>false</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                        <configuration>
+                            <licenseName>lgpl_v3</licenseName>
+                            <includes>
+                                <include>src/**</include>
+                            </includes>
+                            <excludes>
+                                <exclude>target/**</exclude>
+                                <exclude>src/test/resources/xspec/**</exclude>
+                                <exclude>**/*.MF</exclude>
+                                <exclude>**/*.xml</exclude>
+                                <exclude>**/*.xslt</exclude>
+                                <exclude>**/*.tmp</exclude>
+                                <exclude>**/*.xspec</exclude>
+                                <exclude>**/COPYING</exclude>
+                                <exclude>**/COPYING.LESSER</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
 
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.10</version>
-				<executions>
-					<execution>
-						<id>install</id>
-						<phase>install</phase>
-						<goals>
-							<goal>sources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- resources -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<!-- testing -->
- 	    	<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-surefire-plugin</artifactId>
-	       </plugin>			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<configuration>
-			          <providerImplementations>
-			                <git>jgit</git>
-			          </providerImplementations>
-  				  <connectionType>developerConnection</connectionType>
-			        </configuration>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <updateReleaseInfo>true</updateReleaseInfo>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+            <!-- documentation -->
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <locales>en</locales>
+                    <inputEncoding>UTF-8</inputEncoding>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+            </plugin>
 
-			       <dependencies>
-			            <dependency>
-			                 <groupId>org.apache.maven.scm</groupId>
-			                 <artifactId>maven-scm-provider-jgit</artifactId>
-			                 <version>1.9.4</version>
-			            </dependency>
-			       </dependencies>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
 
-			<!-- License management -->
-			<plugin>
-				<groupId>com.mycila.maven-license-plugin</groupId>
-				<artifactId>maven-license-plugin</artifactId>
-				<configuration>
-					<header>src/main/resources/license-header.txt</header>
-					<strictCheck>true</strictCheck>
-					<useDefaultExcludes>true</useDefaultExcludes>
-					<includes>
-						<include>src/**</include>
-					</includes>
-					<excludes>
-						<exclude>target/**</exclude>
-						<exclude>src/test/resources/xspec/**</exclude>
-						<exclude>**/*.MF</exclude>
-						<exclude>**/*.xml</exclude>
-						<exclude>**/*.xslt</exclude>
-						<exclude>**/*.tmp</exclude>
-						<exclude>**/*.xspec</exclude>
-						<exclude>**/COPYING</exclude>
-						<exclude>**/COPYING.LESSER</exclude>
-					</excludes>
-					<useDefaultExcludes>true</useDefaultExcludes>
-					<mapping>
-						<zul>XML_STYLE</zul>
-					</mapping>
-					<properties>
-						<owner>Benoit Mercier</owner>
-						<email>info@servicelibre.com</email>
-						<year>${project.inceptionYear}</year>
-						<name>${project.name}</name>
-						<description>${project.description}</description>
-					</properties>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- releasing -->
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<updateReleaseInfo>true</updateReleaseInfo>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-			</plugin>
-			<!-- documentation -->
-			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
-				<configuration>
-					<locales>en</locales>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>COPYING</include>
+                    <include>COPYING.LESSER</include>
+                </includes>
+                <excludes>
+                    <exclude>license-header.txt</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/test/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.xsl</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
-		<resources>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<includes>
-					<include>COPYING</include>
-					<include>COPYING.LESSER</include>
-				</includes>
-				<excludes>
-					<exclude>license-header.txt</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>${basedir}/src/test/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.xsl</include>
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-	</build>
-
-	<reporting>
-		<outputDirectory>${basedir}/target</outputDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<configuration>
-					<linkJavadoc>true</linkJavadoc>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<quiet>true</quiet>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>javadoc</report>
-						</reports>
-						<configuration>
-							<links>
-								<link>http://java.sun.com/javase/6/docs/api/</link>
-							</links>
-						</configuration>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-changelog-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<linkXref>true</linkXref>
-					<targetJdk>${jdk.version}</targetJdk>
-					<minimumTokens>100</minimumTokens>
-					<rulesets>
-						<!-- Rule sets that come bundled with PMD -->
-						<ruleset>/rulesets/basic.xml</ruleset>
-						<ruleset>/rulesets/braces.xml</ruleset>
-						<ruleset>/rulesets/finalizers.xml</ruleset>
-						<ruleset>/rulesets/imports.xml</ruleset>
-						<ruleset>/rulesets/migrating.xml</ruleset>
-						<ruleset>/rulesets/strings.xml</ruleset>
-						<ruleset>/rulesets/unusedcode.xml</ruleset>
-					</rulesets>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>javancss-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>taglist-maven-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<tags>
-						<tag>TODO</tag>
-						<tag>FIXME</tag>
-						<tag>@todo</tag>
-						<tag>@fixme</tag>
-						<tag>@deprecated</tag>
-					</tags>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-changelog-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
+    <reporting>
+        <outputDirectory>${basedir}/target</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <configuration>
+                    <linkJavadoc>true</linkJavadoc>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <quiet>true</quiet>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                        <configuration>
+                            <links>
+                                <link>http://java.sun.com/javase/6/docs/api/</link>
+                            </links>
+                        </configuration>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <linkXref>true</linkXref>
+                    <targetJdk>${java.version}</targetJdk>
+                    <minimumTokens>100</minimumTokens>
+                    <rulesets>
+                        <!-- Rule sets that come bundled with PMD -->
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <ruleset>/rulesets/braces.xml</ruleset>
+                        <ruleset>/rulesets/finalizers.xml</ruleset>
+                        <ruleset>/rulesets/imports.xml</ruleset>
+                        <ruleset>/rulesets/migrating.xml</ruleset>
+                        <ruleset>/rulesets/strings.xml</ruleset>
+                        <ruleset>/rulesets/unusedcode.xml</ruleset>
+                    </rulesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javancss-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <tags>
+                        <tag>TODO</tag>
+                        <tag>FIXME</tag>
+                        <tag>@todo</tag>
+                        <tag>@fixme</tag>
+                        <tag>@deprecated</tag>
+                    </tags>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 
-	<!-- Dependencies (libs) -->
+    <!-- Dependencies (libs) -->
 
-	<dependencies>
-		<!-- compile and runtime dependencies -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-		</dependency>
+    <dependencies>
+        <!-- compile and runtime dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.core.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.core.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.core.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.6</version>
+        </dependency>
 
-		<!-- 
-		   Saxon: external dependency: cf. Michael Kay - There is no authorised 
-			copy of Saxon available from any public Maven repository. Any copy that you 
-			do find is unauthorised and possibly illegal. The reason for this is that 
-			Saxon incorporates a number of third-party components, such as the Unicode 
-			normalization library, which are issued under BSD-style licenses that require 
-			certain legal notices to be distributed with every copy of the binary software. 
-			Maven, as far as I have been able to determine, provides no mechanism to 
-			ensure that when people download the JAR file, they also get these notices. 
-			Therefore, distribution via Maven contravenes these licensing conditions. 
-			
-			So, here is what to do.
-			
-			1. Download desired version of Saxon from http://saxon.sourceforge.net]
-			2. Upload the Saxon jar file either to your local repository or to your company's
-			maven proxy (Nexus, etc.)
-			
-			mvn install:install-file  -Dfile=path-to-your-saxon-jar \
-			                          -DgroupId=net.sf.saxon \
-			                          -DartifactId=saxon \
-			                          -Dversion=your-saxon-version \
-			                          -Dpackaging=jar \
-			                          -DgeneratePom=true
-			
-			Example :
-					
-					mvn install:install-file  -Dfile=/opt/saxon/saxonhe9-3-0-2j/saxon9he.jar \
-					                          -DgroupId=net.sf.saxon \
-					                          -DartifactId=saxon \
-					                          -Dversion=9.3.0.2j \
-					                          -Dpackaging=jar \
-					                          -DgeneratePom=true
-					
-					rEFERENCE: http://maven.apache.org/plugins/maven-install-plugin/usage.html
-					
-			or to an internal remote repository :
-		
-					mvn deploy:deploy-file    -Durl=http://yourserver/repositories/thirdparty \
-					                          -DrepositoryId=thirdparty \
-					                          -Dfile=/opt/saxon/saxonhe9-3-0-2j/saxon9he.jar \
-					                          -DgroupId=net.sf.saxon \
-					                          -DartifactId=saxon \
-					                          -Dversion=9.3.0.2j \
-					                          -Dpackaging=jar \
-					                          -DgeneratePom=true
-					Reference: http://maven.apache.org/plugins/maven-deploy-plugin/usage.html
-			-->
-		<dependency>
-			<groupId>net.sf.saxon</groupId>
-			<artifactId>Saxon-HE</artifactId>
-		</dependency>
+        <!--
+           Saxon: external dependency: cf. Michael Kay - There is no authorised
+            copy of Saxon available from any public Maven repository. Any copy that you
+            do find is unauthorised and possibly illegal. The reason for this is that
+            Saxon incorporates a number of third-party components, such as the Unicode
+            normalization library, which are issued under BSD-style licenses that require
+            certain legal notices to be distributed with every copy of the binary software.
+            Maven, as far as I have been able to determine, provides no mechanism to
+            ensure that when people download the JAR file, they also get these notices.
+            Therefore, distribution via Maven contravenes these licensing conditions.
 
-		<dependency>
-			<groupId>com.sun.org.apache.xml.internal</groupId>
-			<artifactId>resolver</artifactId>
-			<version>20050927</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-	   		<groupId>com.thoughtworks.xstream</groupId>
-		    <artifactId>xstream</artifactId>
-		</dependency>
+            So, here is what to do.
 
-		<!-- test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>compile</scope>
-		</dependency>
+            1. Download desired version of Saxon from http://saxon.sourceforge.net]
+            2. Upload the Saxon jar file either to your local repository or to your company's
+            maven proxy (Nexus, etc.)
 
-		<dependency>
-			<groupId>xalan</groupId>
-			<artifactId>xalan</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
-	
+            mvn install:install-file  -Dfile=path-to-your-saxon-jar \
+                                      -DgroupId=net.sf.saxon \
+                                      -DartifactId=saxon \
+                                      -Dversion=your-saxon-version \
+                                      -Dpackaging=jar \
+                                      -DgeneratePom=true
+
+            Example :
+
+                    mvn install:install-file  -Dfile=/opt/saxon/saxonhe9-3-0-2j/saxon9he.jar \
+                                              -DgroupId=net.sf.saxon \
+                                              -DartifactId=saxon \
+                                              -Dversion=9.3.0.2j \
+                                              -Dpackaging=jar \
+                                              -DgeneratePom=true
+
+                    rEFERENCE: http://maven.apache.org/plugins/maven-install-plugin/usage.html
+
+            or to an internal remote repository :
+
+                    mvn deploy:deploy-file    -Durl=http://yourserver/repositories/thirdparty \
+                                              -DrepositoryId=thirdparty \
+                                              -Dfile=/opt/saxon/saxonhe9-3-0-2j/saxon9he.jar \
+                                              -DgroupId=net.sf.saxon \
+                                              -DartifactId=saxon \
+                                              -Dversion=9.3.0.2j \
+                                              -Dpackaging=jar \
+                                              -DgeneratePom=true
+                    Reference: http://maven.apache.org/plugins/maven-deploy-plugin/usage.html
+            -->
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.7.0-21</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
 </project>

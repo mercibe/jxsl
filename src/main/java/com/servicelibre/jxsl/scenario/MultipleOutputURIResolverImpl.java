@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -37,9 +37,9 @@ import net.sf.saxon.lib.OutputURIResolver;
 public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
 {
 
-    static Logger logger = LoggerFactory.getLogger(MultipleOutputURIResolverImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(MultipleOutputURIResolverImpl.class);
 
-    private Map<String, StringWriter> outputs = new HashMap<String, StringWriter>();
+    private Map<String, StringWriter> outputs = new HashMap<>();
 
     public void close(Result output) throws TransformerException
     {
@@ -61,8 +61,7 @@ public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
         }
     }
 
-    public Result resolve(String href, String base) throws TransformerException
-    {
+    public Result resolve(String href, String base) {
         StringWriter writer = new StringWriter();
         outputs.put(href, writer);
         return new StreamResult(writer);
@@ -72,8 +71,7 @@ public class MultipleOutputURIResolverImpl implements MultipleOutputURIResolver
     {
         if (outputs.containsKey(name))
         {
-            StringWriter writer = outputs.get(name);
-            return writer;
+            return outputs.get(name);
         }
         return null;
     }

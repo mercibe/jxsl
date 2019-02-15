@@ -1,4 +1,4 @@
-/**
+/*
  * Java XSL code library
  *
  * Copyright (C) 2010 Benoit Mercier <info@servicelibre.com> — All rights reserved.
@@ -36,9 +36,9 @@ import java.util.List;
 public interface XslTestSuiteRunner
 {
 
-    public TestReport run(File testFile);
+    TestReport run(File testFile);
 
-    public List<TestReport> runAll();
+    List<TestReport> runAll();
 
 
 }
