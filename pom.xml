@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <!-- POM base information -->
     <groupId>com.servicelibre</groupId>
     <artifactId>jxsl</artifactId>
-    <version>0.1.14-SNAPSHOT</version>
+    <version>0.1.14</version>
 
     <name>jxsl</name>
     <description>Java XSL helper code library</description>
@@ -29,7 +28,7 @@
         <url>https://github.com/mercibe/jxsl</url>
         <connection>scm:git:https://github.com/mercibe/jxsl.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/mercibe/jxsl.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>jxsl-0.1.14</tag>
     </scm>
 
     <!-- Project details -->
@@ -63,7 +62,7 @@
         <url>https://github.com/mercibe/jxsl/issues</url>
     </issueManagement>
 
-    <ciManagement/>
+    <ciManagement />
 
     <mailingLists>
         <mailingList>
