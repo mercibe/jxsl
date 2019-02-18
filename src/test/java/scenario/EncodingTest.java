@@ -133,8 +133,6 @@ public class EncodingTest {
 
     }
 
-    @Test
-    @Ignore
     public void encodingExploration() {
 
         final String bomChar = "\uFEFF";
