@@ -464,9 +464,9 @@ public class XslScenario {
                     TransformerImpl saxonTransformer = (TransformerImpl) this.transformer;
                     Controller saxonController = saxonTransformer.getUnderlyingController();
                     saxonController.setOutputURIResolver(this.multipleOutputs);
-                    logger.info("Transformer used by this scenario: {}", saxonController.getConfiguration().getProductTitle());
+                    logger.debug("Transformer used by this scenario: {}", saxonController.getConfiguration().getProductTitle());
                 } else {
-                    logger.info("Transformer used by this scenario: {}", this.transformer.getClass().getName());
+                    logger.debug("Transformer used by this scenario: {}", this.transformer.getClass().getName());
                 }
 
             } catch (TransformerConfigurationException e) {

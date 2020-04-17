@@ -76,6 +76,11 @@
 
     <!-- Distributions -->
 
+    <!-- Deploy
+    export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
+    mvn -P release release:perform
+    -->
+
     <distributionManagement>
 
         <snapshotRepository>
