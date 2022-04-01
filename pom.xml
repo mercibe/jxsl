@@ -6,7 +6,7 @@
     <!-- POM base information -->
     <groupId>com.servicelibre</groupId>
     <artifactId>jxsl</artifactId>
-    <version>0.1.17</version>
+    <version>0.1.18-SNAPSHOT</version>
 
     <name>jxsl</name>
     <description>Java XSL helper code library</description>
