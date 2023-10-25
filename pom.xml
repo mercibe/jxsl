@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,11 +15,11 @@
 
     <!-- Properties -->
     <properties>
-        <java.version>10</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.core.version>5.3.27</spring.core.version>
+        <spring.core.version>5.3.28</spring.core.version>
     </properties>
 
     <!-- Source code versionning system -->
@@ -35,13 +35,13 @@
 
     <organization>
         <name>Service libre</name>
-        <url>http://servicelibre.com</url>
+        <url>https://servicelibre.com</url>
     </organization>
 
     <licenses>
         <license>
             <name>GNU Lesser General Public License, Version 3.0</name>
-            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <url>https://www.gnu.org/licenses/lgpl.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -52,7 +52,7 @@
             <name>Benoit Mercier</name>
             <email>benoit.mercibe@gmail.com</email>
             <organization>Service libre</organization>
-            <organizationUrl>http://servicelibre.com</organizationUrl>
+            <organizationUrl>https://servicelibre.com</organizationUrl>
             <timezone>+5</timezone>
         </developer>
     </developers>
@@ -69,7 +69,7 @@
             <name>jxsl</name>
             <subscribe>jxsl-subscribe@googlegroups.com</subscribe>
             <unsubscribe>jxsl-unsubscribe@googlegroups.com</unsubscribe>
-            <archive>http://groups.google.com/group/jxsl</archive>
+            <archive>https://groups.google.com/group/jxsl</archive>
         </mailingList>
     </mailingLists>
 
@@ -137,7 +137,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.11.0</version>
             </plugin>
             <!-- packaging -->
             <plugin>
@@ -205,7 +205,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>3.1.2</version>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens java.base/java.io=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens java.base/java.util.concurrent=ALL-UNNAMED
+                    </argLine>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -228,6 +236,7 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
                 <configuration>
@@ -333,6 +342,7 @@
                     </plugin>
                     <!-- documentation -->
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
                         <version>3.7.1</version>
                         <configuration>
@@ -394,6 +404,7 @@
                     </plugin>
 
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>3.0.1</version>
                         <executions>
@@ -418,7 +429,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <quiet>true</quiet>
@@ -470,7 +481,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.12</version>
         </dependency>
 
         <dependency>
@@ -482,7 +493,7 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.8.0-14</version>
+            <version>9.9.1-8</version>
         </dependency>
 
         <dependency>
@@ -500,21 +511,21 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.19</version>
+            <version>1.4.20</version>
         </dependency>
 
         <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.7</version>
+            <version>2.11.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

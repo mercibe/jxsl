@@ -26,6 +26,8 @@ import net.sf.saxon.Controller;
 import net.sf.saxon.jaxp.TransformerImpl;
 import net.sf.saxon.lib.OutputURIResolver;
 import net.sf.saxon.om.StructuredQName;
+import net.sf.saxon.s9api.QName;
+import net.sf.saxon.s9api.XsltTransformer;
 import net.sf.saxon.trans.XPathException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -460,10 +462,12 @@ public class XslScenario {
                 this.transformer = compiledXsl.newTransformer();
 
                 // Saxon specific
-                if ((this.transformer instanceof net.sf.saxon.jaxp.TransformerImpl)) {
-                    TransformerImpl saxonTransformer = (TransformerImpl) this.transformer;
+                if ((this.transformer instanceof TransformerImpl saxonTransformer)) {
+                    XsltTransformer xsltTransformer = saxonTransformer.getUnderlyingXsltTransformer();
+                    // FIXME
+                    // saxonController.setOutputURIResolver(this.multipleOutputs);
+                    //xsltTransformer.setResultDocumentHandler(uri -> );
                     Controller saxonController = saxonTransformer.getUnderlyingController();
-                    saxonController.setOutputURIResolver(this.multipleOutputs);
                     logger.debug("Transformer used by this scenario: {}", saxonController.getConfiguration().getProductTitle());
                 } else {
                     logger.debug("Transformer used by this scenario: {}", this.transformer.getClass().getName());
@@ -480,14 +484,9 @@ public class XslScenario {
 
     public void setInitialTemplate(String prefix, String suffix, String localName) {
         Transformer transformer = getTransformer();
-        if (transformer instanceof net.sf.saxon.jaxp.TransformerImpl) {
-            TransformerImpl saxonTransformer = (TransformerImpl) transformer;
-            Controller saxonController = saxonTransformer.getUnderlyingController();
-            try {
-                saxonController.setInitialTemplate(new StructuredQName(prefix, suffix, localName));
-            } catch (XPathException e) {
-                logger.error("Error while setting initialTemplate", e);
-            }
+        if (transformer instanceof TransformerImpl saxonTransformer) {
+            XsltTransformer xsltTransformer = saxonTransformer.getUnderlyingXsltTransformer();
+            xsltTransformer.setInitialTemplate(new QName(prefix, suffix, localName));
         } else {
             throw new UnsupportedOperationException("Only Saxon support initialTemplate");
         }
