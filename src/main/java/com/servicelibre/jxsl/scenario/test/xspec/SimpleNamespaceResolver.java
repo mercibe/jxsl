@@ -20,26 +20,26 @@
 package com.servicelibre.jxsl.scenario.test.xspec;
 
 import net.sf.saxon.om.NamespaceResolver;
+import net.sf.saxon.om.NamespaceUri;
 import org.springframework.util.xml.SimpleNamespaceContext;
 
 import java.util.Iterator;
 
 public class SimpleNamespaceResolver implements NamespaceResolver {
 
-	private SimpleNamespaceContext namespaceContext;
+	private final SimpleNamespaceContext namespaceContext;
 	
 	SimpleNamespaceResolver(SimpleNamespaceContext namespaceContext) {
 		this.namespaceContext = namespaceContext;
 	}
 
 	@Override
-	public String getURIForPrefix(String prefix, boolean useDefault) {
-		return namespaceContext.getNamespaceURI(prefix);
+	public NamespaceUri getURIForPrefix(String prefix, boolean useDefault) {
+		return NamespaceUri.of(namespaceContext.getNamespaceURI(prefix));
 	}
 
 	@Override
 	public Iterator<String> iteratePrefixes() {
-		
 		return namespaceContext.getBoundPrefixes();
 	}
 

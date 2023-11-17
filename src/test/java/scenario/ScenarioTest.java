@@ -107,6 +107,23 @@ public class ScenarioTest {
 
     }
 
+    @Test
+    public void multipleOutput() throws IOException {
+
+        XslScenario sc = new XslScenario(testResources.get("test01-xslt3.xsl").getURL());
+        assertEquals("test01-xslt3.output", sc.getMainOutputName());
+
+        File xmlFile = new File(testResources.get("test01.xml").getURI());
+
+        Map<String, String> outputs = sc.apply(xmlFile);
+        outputs.get(XslScenario.MAIN_OUTPUT_KEY);
+
+        assertEquals(2,outputs.size());
+
+
+
+    }
+
     /*
      * We should test:
      *

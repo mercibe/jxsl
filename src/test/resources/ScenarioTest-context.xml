@@ -9,6 +9,7 @@
 	<util:map id="testResources" value-type="org.springframework.core.io.Resource">
 		<entry key="test01-xslt1.xsl" value="classpath:test01-xslt1.xsl" />
 		<entry key="test01-xslt2.xsl" value="classpath:test01-xslt2.xsl" />
+		<entry key="test01-xslt3.xsl" value="classpath:test01-xslt3.xsl" />
 		<entry key="test01.xml" value="classpath:test01.xml" />
 		<entry key="utf16-doc.xml" value="classpath:utf16-doc.xml"/>
 		<entry key="encoding.xsl" value="classpath:encoding.xsl"/>

@@ -22,13 +22,11 @@ package com.servicelibre.jxsl.scenario;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import net.sf.saxon.Controller;
 import net.sf.saxon.jaxp.TransformerImpl;
 import net.sf.saxon.lib.OutputURIResolver;
-import net.sf.saxon.om.StructuredQName;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.XsltTransformer;
-import net.sf.saxon.trans.XPathException;
+import net.sf.saxon.trans.XsltController;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
@@ -167,7 +165,7 @@ public class XslScenario {
 
     public Map<String, String> apply(File xmlFile) {
         try {
-            return apply(FileUtils.readFileToByteArray(xmlFile), xmlFile.getAbsolutePath());
+            return apply(FileUtils.readFileToByteArray(xmlFile), xmlFile.getAbsolutePath() + "." + System.currentTimeMillis());
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
@@ -176,11 +174,11 @@ public class XslScenario {
     }
 
     public Map<String, String> apply(String xmlString) {
-        return apply(xmlString.getBytes(), "");
+        return apply(xmlString.getBytes(), String.valueOf(System.currentTimeMillis()));
     }
 
     public Map<String, String> apply(byte[] xmlBytes) {
-        return apply(xmlBytes, "");
+        return apply(xmlBytes, String.valueOf(System.currentTimeMillis()));
     }
 
     public Map<String, String> apply(String xmlString, String charsetName) {
@@ -195,7 +193,7 @@ public class XslScenario {
 
     /**
      * Apply XSL transformation on XML bytes.
-     *
+     * <a href="https://www.saxonica.com/html/documentation12/functions/fn/document-uri.html">document-uri</a>
      * @param xmlBytes xml bytes array
      * @param systemId xml SystemId
      * @return a Map with transformation result
@@ -204,12 +202,19 @@ public class XslScenario {
 
         Map<String, String> xslOutputs = new HashMap<>(1);
 
-        Transformer transformer = getTransformer();
+        Transformer transformer;
+
+        try {
+            transformer = getTransformer();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         if (transformer == null) {
             logger.warn("No transformer available for xslPath {}", xslPath);
             return xslOutputs;
         }
+
 
         multipleOutputs.clearResults();
 
@@ -237,9 +242,7 @@ public class XslScenario {
             // save XML source if requested
             if (saveXmlSource) {
                 File xmlSourceFile = saveXmlSourceFile(xmlBytes);
-                if (xmlSourceFile != null) {
-                    xmlSourceFilename = xmlSourceFile.getAbsolutePath();
-                }
+                xmlSourceFilename = xmlSourceFile.getAbsolutePath();
             }
 
             InputSource inputSource = new InputSource(new ByteArrayInputStream(xmlBytes));
@@ -463,11 +466,15 @@ public class XslScenario {
 
                 // Saxon specific
                 if ((this.transformer instanceof TransformerImpl saxonTransformer)) {
+
                     XsltTransformer xsltTransformer = saxonTransformer.getUnderlyingXsltTransformer();
-                    // FIXME
-                    // saxonController.setOutputURIResolver(this.multipleOutputs);
-                    //xsltTransformer.setResultDocumentHandler(uri -> );
-                    Controller saxonController = saxonTransformer.getUnderlyingController();
+                    XsltController saxonController = xsltTransformer.getUnderlyingController();
+                    saxonController.setBaseOutputURI("");
+                    saxonController.setOutputURIResolver(multipleOutputs.newInstance());
+//                    // FIXME
+//                    // https://www.saxonica.com/html/documentation12/using-xsl/stylesheet-output/secondary-output.html
+//                     //saxonController.setOutputURIResolver(this.multipleOutputs);
+
                     logger.debug("Transformer used by this scenario: {}", saxonController.getConfiguration().getProductTitle());
                 } else {
                     logger.debug("Transformer used by this scenario: {}", this.transformer.getClass().getName());
@@ -476,6 +483,9 @@ public class XslScenario {
             } catch (TransformerConfigurationException e) {
                 logger.error(e.getMessage(), e);
             }
+            //catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
 
         }
 
