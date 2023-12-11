@@ -38,7 +38,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ScenarioTest {
 
-    @javax.annotation.Resource
+    @jakarta.annotation.Resource
     private Map<String, Resource> testResources;
 
     @Test

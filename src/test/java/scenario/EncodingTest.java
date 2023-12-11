@@ -42,8 +42,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class EncodingTest {
 
-    //@java.xml.ws.annotation
-    @javax.annotation.Resource
+    @jakarta.annotation.Resource
     private Map<String, Resource> testResources;
 
     @Test
