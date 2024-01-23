@@ -6,7 +6,7 @@
     <!-- POM base information -->
     <groupId>com.servicelibre</groupId>
     <artifactId>jxsl</artifactId>
-    <version>0.1.24-SNAPSHOT</version>
+    <version>0.1.24</version>
 
     <name>jxsl</name>
     <description>Java XSL helper code library</description>
@@ -28,7 +28,7 @@
         <url>https://github.com/mercibe/jxsl</url>
         <connection>scm:git:https://github.com/mercibe/jxsl.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/mercibe/jxsl.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>jxsl-0.1.24</tag>
     </scm>
 
     <!-- Project details -->
